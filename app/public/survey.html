@@ -162,7 +162,7 @@
     </div>
 
     <!-- Modal -->
-    <div id="results-modal" class="modal d-none" role="dialog" >
+    <div id="results-modal" class="modal fade" role="dialog">
         <div class="modal-dialog">
             <!-- Modal content-->
             <div class="modal-content">
@@ -179,6 +179,7 @@
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </div>
+
         </div>
     </div>
 
@@ -225,20 +226,18 @@
                 $.post("/api/friends", userData, function (data) {
 
                     // Grab the result from the AJAX post so that the best match's name and photo are displayed.
-                    $("#match-name").text(data.body.name);
-                    $("#match-img").attr("src", data.body.photo);
+                    $("#match-name").text(data.name);
+                    $("#match-img").attr("src", data.photo);
 
                     // Show the modal with the best match
-                    $("#results-modal").show();
+                    $("#results-modal").modal("toggle");
 
                 });
             } else {
                 alert("Please fill out all fields before submitting!");
             }
         });
-
     </script>
-
 </body>
 
 </html>

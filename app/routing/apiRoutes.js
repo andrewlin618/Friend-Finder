@@ -1,14 +1,12 @@
 var express = require('express');
 var router = express.Router();
-fs = require('fs');
+const fs = require('fs');
 
 var friendsList = require('../data/friends.js');
 
 router.get('/friends', function (req, res) {
     res.send(friendsList);
 });
-
-
 
 router.post('/friends', function (req, res) {
     var user = {
@@ -37,15 +35,7 @@ router.post('/friends', function (req, res) {
         }
     }
     friendsList.push(user);
-    friendsList.push(bestMatch);
-    fs.writeFileSync('../data/friends.js',friendsList,{encoding:'utf8',flag:'w'});
+    fs.writeFile('../data/friends.js',friendsList,{encoding:'utf8',flag:'w'});
     
-    
-    // })
-
-    // function reduceFunction(total, num) {
-    //     return total + num;
-
-
 });
 module.exports = router;
