@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-const fs = require('fs');
+var fs = require('fs');
 
 var friendsList = require('../data/friends.js');
 
@@ -35,7 +35,17 @@ router.post('/friends', function (req, res) {
         }
     }
     friendsList.push(user);
-    fs.writeFile('../data/friends.js',friendsList,{encoding:'utf8',flag:'w'});
-    
+    console.log(friendsList);
+    // fs.writeFile('../data/friends.js', friendsList, function (err) {
+    //     if (err) throw err;
+    //     console.log('Replaced!');
+    // });
+    // fs.appendFile('../data/friends.js', '', function (err) {
+    //     if (err) throw err;
+    //     console.log('Appended!');
+    // });
+
+
 });
+
 module.exports = router;
